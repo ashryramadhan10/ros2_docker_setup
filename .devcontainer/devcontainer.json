@@ -1,0 +1,37 @@
+{
+  "name": "ROS 2 Humble Development",
+  "build": {
+    "dockerfile": "Dockerfile"
+  },
+  "workspaceFolder": "/workspace",
+  "workspaceMount": "source=${localWorkspaceFolder},target=/workspace,type=bind",
+  "privileged": true,
+  "runArgs": [
+    "--network=host",
+    "--env=DISPLAY=${localEnv:DISPLAY}",
+    "--volume=/tmp/.X11-unix:/tmp/.X11-unix:rw",
+    "--env=QT_X11_NO_MITSHM=1",
+    "--device-cgroup-rule=c 81:* rmw",
+    "--device-cgroup-rule=c 189:* rmw",
+    "--volume=/dev:/dev"
+  ],
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "ms-vscode.cpptools",
+        "ms-python.python",
+        "ms-vscode.cmake-tools",
+        "twxs.cmake",
+        "ms-iot.vscode-ros"
+      ],
+      "settings": {
+        "python.defaultInterpreterPath": "/usr/bin/python3",
+        "cmake.configureOnOpen": false
+      }
+    }
+  },
+  "remoteUser": "root",
+  "features": {
+    "ghcr.io/devcontainers/features/git:1": {}
+  }
+}

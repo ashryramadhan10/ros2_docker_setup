@@ -1,0 +1,21 @@
+# ROS 2 build artifacts
+build/
+install/
+log/
+
+# IDE files
+.vscode/c_cpp_properties.json
+.vscode/launch.json
+.vscode/tasks.json
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+*.so
+
+# OS
+.DS_Store
+Thumbs.db

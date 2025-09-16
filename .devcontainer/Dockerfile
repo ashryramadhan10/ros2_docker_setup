@@ -28,9 +28,6 @@ RUN apt-get install -y \
     python3-yaml \
     && rm -rf /var/lib/apt/lists/*
 
-# Install textual for ros2sysmon
-RUN python3 -m pip install textual
-
 # Install lazyros
 RUN python3 -m pip install lazyros
 

@@ -15,6 +15,7 @@
     "--device-cgroup-rule=c 189:* rmw",
     "--volume=/dev:/dev"
   ],
+  "postCreateCommand": "./setup.sh",
   "customizations": {
     "vscode": {
       "extensions": [

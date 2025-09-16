@@ -77,6 +77,8 @@ If you encounter "permission denied" errors when running Docker commands, config
 - **Editors**: vim, nano
 - **Terminal**: terminator
 - **Version control**: git
+- **System monitoring**: ros2sysmon - terminal-based ROS2 system monitor
+- **ROS utilities**: lazyros - lazy evaluation utilities for ROS2
 
 ### VS Code Extensions
 - C/C++ IntelliSense
@@ -140,6 +142,18 @@ colcon build --packages-select <package_name>
 
 # Build with debug info
 colcon build --cmake-args -DCMAKE_BUILD_TYPE=Debug
+```
+
+### System Monitoring
+```bash
+# Launch ROS2 system monitor
+ros2 run ros2sysmon ros2sysmon
+
+# Controls:
+# 1 - Topics + TF frames view
+# 2 - ROS nodes + processes view
+# r - Manual refresh
+# q/x - Exit
 ```
 
 ## Troubleshooting

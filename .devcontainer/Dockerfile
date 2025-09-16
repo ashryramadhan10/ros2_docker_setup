@@ -22,7 +22,17 @@ RUN apt-get install -y \
     git \
     vim \
     nano \
+    python3-pip \
+    python3-rich \
+    python3-psutil \
+    python3-yaml \
     && rm -rf /var/lib/apt/lists/*
+
+# Install textual for ros2sysmon
+RUN python3 -m pip install textual
+
+# Install lazyros
+RUN python3 -m pip install lazyros
 
 # Source ROS 2 setup in bashrc
 RUN echo "source /opt/ros/humble/setup.bash" >> ~/.bashrc
@@ -32,7 +42,7 @@ RUN echo "source /usr/share/colcon_argcomplete/hook/colcon-argcomplete.bash" >> 
 RUN if [ ! -f /etc/ros/rosdep/sources.list.d/20-default.list ]; then rosdep init; fi
 RUN rosdep update
 
-# Create workspace
-RUN mkdir -p /workspace/src
+# Configure git safe directory
+RUN git config --global --add safe.directory /workspace
 
 WORKDIR /workspace

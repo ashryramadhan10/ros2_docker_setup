@@ -14,6 +14,7 @@ RUN apt-get install -y \
     librealsense2-dbg \
     gazebo \
     ros-humble-gazebo-ros-pkgs \
+    ros-humble-plotjuggler-ros \
     terminator \
     python3-colcon-common-extensions \
     python3-rosdep \
@@ -26,6 +27,9 @@ RUN apt-get install -y \
     python3-rich \
     python3-psutil \
     python3-yaml \
+    libqt5svg5-dev \
+    libqt5websockets5-dev \
+    libqt5x11extras5-dev \
     && rm -rf /var/lib/apt/lists/*
 
 # Install lazyros

@@ -1,6 +1,6 @@
 #!/bin/bash
-python3 -m pip install textual
 
+# ================= ONNX Runtime =================
 # Install ONNX Runtime if not already installed
 if [ ! -f "/usr/local/lib/libonnxruntime.so" ]; then
     echo "Installing ONNX Runtime 1.22.1..."
@@ -60,6 +60,21 @@ else
     echo "ONNX Runtime already installed"
 fi
 
+# ================= ONNX Runtime =================
+
+# ================= OpenCV =================
+# Install OpenCV if not already installed
+if ! pkg-config --exists opencv4; then
+    echo "Installing OpenCV..."
+    apt-get update && apt-get install -y \
+        libopencv-dev \
+        python3-opencv
+    echo "OpenCV installation completed!"
+else
+    echo "OpenCV already installed"
+fi
+# ================= OpenCV =================
+
 # Change to workspace directory
 cd /workspace
 
@@ -68,6 +83,9 @@ mkdir -p src
 
 # Source ROS2 environment
 source /opt/ros/humble/setup.bash
+
+# for ros2 ros2sysmon
+python3 -m pip install textual
 
 # Clone ros2sysmon if it doesn't exist
 if [ ! -d "src/ros2sysmon" ]; then
@@ -86,3 +104,11 @@ colcon build --packages-select ros2sysmon
 # Source the workspace
 echo "Sourcing workspace..."
 source install/setup.bash
+
+# Testing all installation in cmake
+
+# Test ONNX Runtime
+cmake --find-package -DNAME=onnxruntime -DCOMPILER_ID=GNU -DLANGUAGE=CXX -DMODE=EXIST
+
+# Test OpenCV
+cmake --find-package -DNAME=OpenCV -DCOMPILER_ID=GNU -DLANGUAGE=CXX -DMODE=EXIST

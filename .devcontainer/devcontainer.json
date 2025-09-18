@@ -1,5 +1,5 @@
 {
-  "name": "ROS 2 Humble Development",
+  "name": "ROS2_Humble",
   "build": {
     "dockerfile": "Dockerfile"
   },

@@ -1,0 +1,14 @@
+workspace_dir: /workspace
+temp_dir: /tmp
+parallel_install: false
+verify_after_install: true
+
+components:
+  onnx_runtime:
+    version: "1.22.1"
+  
+  opencv:
+    # Uses system packages
+  
+  ros2sysmon:
+    workspace_dir: /workspace

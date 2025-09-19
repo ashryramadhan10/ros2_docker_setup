@@ -1,0 +1,9 @@
+name: "Full Development Environment"
+description: "Complete setup with all available components"
+components:
+  - opencv
+  - onnx_runtime
+  - ros2sysmon
+options:
+  parallel_install: false
+  verify_after_install: true

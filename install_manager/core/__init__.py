@@ -1,0 +1,1 @@
+# Core functionality for ROS2 Dependency Manager

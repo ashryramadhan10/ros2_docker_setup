@@ -1,8 +1,0 @@
-name: "Minimal Setup"
-description: "Basic ROS2 development environment"
-components:
-  - opencv
-  - ros2sysmon
-options:
-  parallel_install: false
-  verify_after_install: true

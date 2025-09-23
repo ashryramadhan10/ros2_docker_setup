@@ -7,14 +7,12 @@ RUN curl -sSf https://librealsense.intel.com/Debian/librealsense.pgp | tee /etc/
 RUN echo "deb [signed-by=/etc/apt/keyrings/librealsense.pgp] https://librealsense.intel.com/Debian/apt-repo `lsb_release -cs` main" | tee /etc/apt/sources.list.d/librealsense.list
 RUN apt-get update
 
-# Install Gazebo, Terminator, and RealSense (without DKMS)
+# Install system packages first
 RUN apt-get install -y \
     librealsense2-utils \
     librealsense2-dev \
     librealsense2-dbg \
     gazebo \
-    ros-humble-gazebo-ros-pkgs \
-    ros-humble-plotjuggler-ros \
     terminator \
     python3-colcon-common-extensions \
     python3-rosdep \
@@ -30,6 +28,13 @@ RUN apt-get install -y \
     libqt5svg5-dev \
     libqt5websockets5-dev \
     libqt5x11extras5-dev \
+    && rm -rf /var/lib/apt/lists/*
+
+# Install ROS2 packages separately with fresh update
+RUN apt-get update && apt-get install -y \
+    ros-humble-gazebo-ros-pkgs \
+    ros-humble-plotjuggler-ros \
+    ros-humble-realsense2-camera \
     && rm -rf /var/lib/apt/lists/*
 
 # Install lazyros

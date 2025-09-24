@@ -149,8 +149,8 @@ class BeamDetectorNode : public rclcpp::Node {
 public:
     BeamDetectorNode() : Node("beam_detector_node") {
         // Declare parameters
-        this->declare_parameter("model_path", "/workspace/BeamDetectorInference/models/best.onnx");
-        this->declare_parameter("labels_path", "/workspace/BeamDetectorInference/models/Dota.names");
+        this->declare_parameter("model_path", "/workspace/models/best.onnx");
+        this->declare_parameter("labels_path", "/workspace/models/Dota.names");
         this->declare_parameter("conf_threshold", 0.5);
         this->declare_parameter("use_gpu", true);
         this->declare_parameter("input_topic", "/camera/camera/color/image_raw");
